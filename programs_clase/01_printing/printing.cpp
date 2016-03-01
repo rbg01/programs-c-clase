@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+  // Uso de printf en dos líneas
 int main(){
 
 	printf("Hola, Edmundo\n"
