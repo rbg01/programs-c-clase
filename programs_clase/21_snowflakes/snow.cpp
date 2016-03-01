@@ -40,9 +40,9 @@ void step(Copo data[FLAKES]){
 void dibuja(Copo data[FLAKES], int width, int height){
 
     clear();
-    for (int i=0; i<FLAKES; i++)
-	mvprintw( (int)data[i].y % height,
-		 (int)data[i].x % width, '*');
+    for (int i=0; i<FLAKES; i++)	
+        mvprintw( (int)data[i].y % height,
+		 (int)data[i].x % width, "*");
 
     refresh();
 
