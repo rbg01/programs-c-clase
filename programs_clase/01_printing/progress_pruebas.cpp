@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+  // Barra de progreso
 int main(){
 
     int vez = 80,
