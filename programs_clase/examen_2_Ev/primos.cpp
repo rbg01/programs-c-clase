@@ -6,22 +6,22 @@
 bool es_primo(int candidato){
 
     /* tengo que comprobar si el candidato tiene algún divisor
-     * desde 0 hasta el candidato, si tiene más de dos divisores,
-     * el número NO es primo, si tiene dos divisores, SI es primo*/ 
+     * desde 1 hasta el candidato, si tiene más de dos divisores,
+     * el número NO es primo, si tiene dos divisores(o uno en el
+     * del número 1), SI es primo*/ 
 
     
     bool resultado;
     int divisores = 0;
 
 
-    for (int i=0; i < candidato+1; i++){
+    for (int i=1; i < candidato+1; i++){
 
         if (candidato%i == 0)
             divisores += 1;
     }
-
-
-        if ( divisores == 2 )
+    
+        if ( (divisores == 2 )||(divisores == 1))
 
             resultado = true;
         else
