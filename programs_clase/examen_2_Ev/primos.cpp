@@ -1,34 +1,72 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <time.h>
 #define TAMAN 100
 
 bool es_primo(int candidato){
 
-    /* tengo que comprobar si el candidato es multiplo de algún
-     * número primo 2, 3, 5 o 7, para descartar unos cuantos
-     * ; y luego comprobar si es divisible entre si mismo y la unidad*/
+    /* tengo que comprobar si el candidato tiene algún divisor
+     * desde 0 hasta el candidato, si tiene más de dos divisores,
+     * el número NO es primo, si tiene dos divisores, SI es primo*/ 
 
-    int primos[] = {2,3,5,7};
+    
     bool resultado;
+    int divisores = 0;
 
 
-    for (int i=0; i<4; i++){
-        if(((candidato % primos[i]) != 0) &&
-                ((candidato / candidato) == 1) &&
-                ((candidato / 1) == candidato)){
+    for (int i=0; i < candidato+1; i++){
+
+        if (candidato%i == 0)
+            divisores += 1;
+    }
+
+
+        if ( divisores == 2 )
 
             resultado = true;
-        }else
+        else
             resultado = false;
 
-    }
+                
+
+    
 
   return resultado;
 }
 
 
 int main(int argc, const char **argv){
+
+    int numeros[100];
+    int result;
+
+    srand(time(NULL));
+
+    /* LLenar el array de números aleatorios*/
+
+    for (int i=0; i<100 ; i++)
+        numeros[i] = (rand()%100);
+
+    
+
+    for (int i=0; i<100 ; i++){
+        result = es_primo(numeros[i]);
+        
+        switch (result){
+
+            case 1:
+                printf ("el número %i, es primo\n", numeros[i]);
+                break;
+            
+            case 0:
+                printf ("el número %i, no es primo\n", numeros[i]);
+                break;
+
+        }
+
+
+      
+    }
 
 
 
