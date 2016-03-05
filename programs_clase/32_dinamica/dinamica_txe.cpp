@@ -36,13 +36,13 @@ bool push(struct Pila *pila, int numero){
      * 'struct Pila *pila' ---> Puntero a un tipo d dato 'struct Pila'*/
 int pop(struct Pila* pila) {
     //printf("POP\n");
-    printf("POP %i\n", pila->data[--(pila->primera_posicion_libre)]);
+    //printf("POP %i\n", pila->data[(pila->primera_posicion_libre)]);
     if (pila->primera_posicion_libre <= 0){
 
         printf("No posible POP,only PUSH\n");
         return 0;
     }
-    printf("Nuevo tamaño pila = %i\n", pila->primera_posicion_libre - 1);
+    printf("Nuevo tamaño pila = %i\n", pila->primera_posicion_libre);
     return pila->data[--(pila->primera_posicion_libre)];
 }
 
