@@ -4,18 +4,18 @@
 
 void set(int *matriz, int fila, int col, int dato, int ancho){
 
-      for (int f=0; f<fila; f++)
-          for (int c=0; c<col; c++)
-              matriz[f * ancho + c] = dato;
+      //for (int f=0; f<fila; f++)
+      //    for (int c=0; c<col; c++)
+             *(matriz+(fila * ancho + col)) = dato;
 
 }
 
 int get(int *matriz, int fila, int col, int ancho){
     int dato=0;
 
-    for (int f=0; f<fila; f++)
-        for (int c=0; c<col; c++)
-            dato = matriz[f * ancho + c];
+//    for (int f=0; f<fila; f++)
+//        for (int c=0; c<col; c++)
+            dato = *(matriz+(fila * ancho + col));
 
     
 
