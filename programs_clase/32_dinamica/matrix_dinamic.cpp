@@ -42,7 +42,7 @@ int main(int argc, const char **argv){
 
     //reservar espacio para a
 
-  //  a = (int *) realloc(a, (filas*col)*sizeof(int));
+
 
     // Bucle para solicitar la entrada
 
