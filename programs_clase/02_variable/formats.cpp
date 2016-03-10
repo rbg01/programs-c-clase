@@ -1,3 +1,6 @@
+
+  /* Formatos*/
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -5,8 +8,8 @@ int main(){
 
     char letra = 0141; // 97, 0x61
 
-    printf("Hol%i.\n", letra);
-    printf("Hol%c\n", letra);
+    printf("Hol%i.\n", letra);  //-->imprime un entero
+    printf("Hol%c\n", letra); //-->inprime el carácter
 
     printf("%d.\n", 27);
     printf("%x.\n", 27);
