@@ -1,3 +1,6 @@
+
+  /* Asignaciones a enteros */
+
 #include <stdio.h>
 #include <stdlib.h>
 
