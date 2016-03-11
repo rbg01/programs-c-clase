@@ -77,6 +77,7 @@ int main(int argc, const char **argv){
     for (int p=0; p<PALOS; p++)
         init(&palo[p]);
 
+    // Ponemos en el palo[0]todos los discos
     for (int disco=5; disco>0; disco--)
         push(&palo[0], disco);
 
