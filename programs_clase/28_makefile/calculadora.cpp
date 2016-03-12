@@ -5,7 +5,7 @@
 int main(int argc, const char **argv){
 
 
-    printf("2+3= %i\n", sumar(2,3));
+    printf("2+3= %i\n", suma(2,3));
 
 
 
