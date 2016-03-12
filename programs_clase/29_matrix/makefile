@@ -12,7 +12,7 @@ multiplica.o: multiplica.cpp multiplica.h
 	$(CC) -c multiplica.cpp
 
 
-matrices.o: matrices.cpp matrices.h
+matrices.o: matrices.cpp matrices.h multiplica.h marrick.h
 	$(CC) -c matrices.cpp
 
 
