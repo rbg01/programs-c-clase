@@ -16,17 +16,17 @@ int main(int argc, const char **argv){
     /* solicitar datos para rellenar las matrices*/
     system ("clear");
 
-    rellena((int *)matriz_a, FIL_A, COMUN, "primera: A");
-    imprime((int *)matriz_a, FIL_A, COMUN, "A");
-    rellena((int *)matriz_b, COMUN, COL_B), "segunda: B";
-    imprime((int *)matriz_b, COMUN, COL_B, "B");
+    rellenar((int *)matriz_a, FIL_A, COMUN, "primera: A");
+    imprimir((int *)matriz_a, FIL_A, COMUN, "A");
+    rellenar((int *)matriz_b, COMUN, COL_B, "segunda: B");
+    imprimir((int *)matriz_b, COMUN, COL_B, "B");
 
     /*hacer la operacion con la funcion*/
 
-    multiplica(int *matriz_a, int *matriz_b, int *matriz_prod,int FIL_A, int COL_B);
+    multiplica((int *) matriz_a, (int *) matriz_b, (int *) matriz_prod, FIL_A, COL_B, COMUN);
 
   
-    imprime ((int *)matriz_prod, FIL_A, COL_B, "P");
+    imprimir((int *)matriz_prod, FIL_A, COL_B, "P");
 
 
 
