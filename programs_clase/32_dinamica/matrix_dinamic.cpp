@@ -18,7 +18,6 @@ int get(int *matriz, int fila, int col, int ancho){
 
             dato = *(matriz+(fila * ancho + col));
 
-    
 
 
     return dato;
