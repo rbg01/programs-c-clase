@@ -6,11 +6,12 @@ void analizar(char *frase,int *pv,int *pc,int *pd,int *pw,int *po){
 
     char c;
 
-    printf("%c", *frase);
+
 
   
 
-	c = toupper(*frase);
+  for (int i=0; i != '\0'; i++){
+	c = frase[i];
 
 	if (c=='A'||c=='E'||c=='I'||c=='O'||c=='U')
 	    *pv+=1;
@@ -26,6 +27,7 @@ void analizar(char *frase,int *pv,int *pc,int *pd,int *pw,int *po){
 
 	else
 	    *po+=1;
+  }
     
     return;
 }
