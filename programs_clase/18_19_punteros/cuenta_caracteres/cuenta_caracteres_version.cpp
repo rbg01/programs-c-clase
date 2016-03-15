@@ -57,14 +57,11 @@ int main(int argc, const char **argv){
     printf ("Introduce una linea de texto debajo:\n");
     scanf (" %[^\n]", frase);
 
-    for (int k=0; k!='\0'; k++)
-	printf("%c", frase[k]);
 
+    
 
-    for (int j=0; j !='\0'; j++){
-
-    analizar(&frase[j],pv,pc,pd,pw,po);
-    }
+    analizar(frase,pv,pc,pd,pw,po);
+    
 
     printf("Vocales: %i\n"
 	    "Consonantes: %i\n"
