@@ -3,7 +3,7 @@
 
 int main(){
 
-    FILE *pf;
+    FILE *pf; // Declaramos *pf como una variable puntero tipo FILE
 
     pf = fopen("lyrics.txt", "w"); //abrir archivo lyrics.txt en modo w
 
