@@ -7,8 +7,8 @@
 #include <stdlib.h>
 #include <strings.h>
 
-#define MAX_DISC 10
-#define MAX_PILA 10
+#define MAX_DISC 10 // Diámetro máximo de disco
+#define MAX_PILA 10 // Tamaño de la pila
 #define PALOS 3
 
 
@@ -17,7 +17,7 @@
 struct Palo{
 
     int cima;
-    int discos[MAX_DISC];
+    int discos[MAX_PILA];
 };
 
 
@@ -87,10 +87,14 @@ int main(int argc, const char **argv){
         system("clear");
 
         for (int fila=MAX_PILA-1; fila>=0; fila--) {
+
             for (int n_palo=0; n_palo<PALOS; n_palo++) {
+
                 printf("\t");
-                int asteriscos = palo[n_palo].discos[fila];
-                int espacios   = MAX_DISC - asteriscos;
+
+                int asteriscos = palo[n_palo].discos[fila]; // el número de * es igual al tamaño del disco
+                int espacios   = MAX_DISC - asteriscos;     // el número de " " es igual al diametro max - los asteriscos.
+
                 if (fila >= palo[n_palo].cima){
                     espacios = MAX_DISC;
                     asteriscos = 0;
@@ -108,6 +112,7 @@ int main(int argc, const char **argv){
             printf("\norigen, destino: ");
             scanf(" %i, %i", &origen, &destino);
         } while(destino > PALOS || destino < 0 );
+
         push( &palo[--destino], pull(&palo[--origen]) );
     }
 
