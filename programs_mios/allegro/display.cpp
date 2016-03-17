@@ -3,7 +3,7 @@
 #include <allegro5/allegro.h>
 
 
-int main(int argc, const char **argv){
+int main(int argc, char **argv){
 
     ALLEGRO_DISPLAY *display = NULL;
 
@@ -19,7 +19,7 @@ int main(int argc, const char **argv){
         return -1;
     }
 
-    al_clear_to_color(al_map_rgb(0,255,255));
+    al_clear_to_color(al_map_rgb(255,0,255));
     
     al_flip_display();
 
