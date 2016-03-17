@@ -13,6 +13,8 @@ void analizar(char *frase,int *pv,int *pc,int *pd,int *pw,int *po){
   for (int i=0; i != '\0'; i++){
 	c = frase[i];
 
+        c = toupper(frase[i]);
+
 	if (c=='A'||c=='E'||c=='I'||c=='O'||c=='U')
 	    *pv+=1;
 
@@ -68,9 +70,6 @@ int main(int argc, const char **argv){
 	    "Dígitos: %i\n"
 	    "Blancos: %i\n"
 	    "Otros: %i\n", voc,con,dig,wsp,otr);
-
-    for (int k=0; k!='\0'; k++)
-	printf("%c", frase[k]);
 
 
 	return EXIT_SUCCESS;
