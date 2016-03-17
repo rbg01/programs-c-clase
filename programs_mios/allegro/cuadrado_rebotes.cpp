@@ -66,7 +66,7 @@ void recalcular_posiciones(struct Nave nave[N]){
 }
 
 
-int main(int argc, const char **argv){
+int main(int argc, char **argv){
 
     // Variables
     ALLEGRO_DISPLAY *ventana = NULL;
