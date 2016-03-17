@@ -53,7 +53,7 @@ int main(int argc, const char **argv){
     for (int p=0; p<PALOS; p++)
         inicializar(&palo[p]);
 
-    for (int disco=5; disco>0; disco--)
+    for (int disco=9; disco>0; disco--)
         push(&palo[0], disco);
 
 
