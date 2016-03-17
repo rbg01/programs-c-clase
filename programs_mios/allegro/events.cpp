@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <allegro5/allegro.h>
 
-int main(int argc, const char **argv){
+int main(int argc, char **argv){
 
     ALLEGRO_DISPLAY *display = NULL;
     ALLEGRO_EVENT_QUEUE *event_queue = NULL;
@@ -32,7 +32,7 @@ int main(int argc, const char **argv){
                 //los metes en event queue
     al_register_event_source(event_queue, al_get_display_event_source(display));
 
-    al_clear_to_color(al_map_rgb(255,0,0));
+    al_clear_to_color(al_map_rgb(0,255,0));
 
     al_flip_display();
 
@@ -42,7 +42,7 @@ int main(int argc, const char **argv){
         ALLEGRO_EVENT ev;
         ALLEGRO_TIMEOUT timeout;
 
-        al_init_timeout(&timeout, 0.06);
+        al_init_timeout(&timeout, 1);
 
                 //espera timeout a ver si hay algún evento y lo guarda en &ev
         bool get_event = al_wait_for_event_until(event_queue, &ev, &timeout);
