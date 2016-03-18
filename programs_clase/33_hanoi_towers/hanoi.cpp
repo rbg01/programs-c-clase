@@ -26,10 +26,10 @@ bool push(struct Pila *pila, int dato){
         return false;
     if (pila->cima >= MAX_PILA)
         return false;
-    if ( pila->cima > 0 && dato > pila->data[pila->cima] && dato > pila->data[pila->cima-1])//en la primera vuelta cima = 0,,¿¿q pasa??
+    if ( pila->cima > 0 && dato > pila->data[pila->cima-1])
         return false;
-
-    pila->data[pila->cima++] = dato;
+    else
+        pila->data[pila->cima++] = dato;
 
     //   printf("%i", pila->data[pila->cima-1]);
 
@@ -91,11 +91,10 @@ int main(int argc, const char **argv){
 
         } while(destino > PALOS || destino < 0 );//en caso de q pongamos un destino > 3, o un destino negativo, nos pide otra vez los datos..
         disc = pop(&palo[--origen]);
-        if(disc > palo[--destino].data[palo->cima-1] && push( &palo[--destino], disc != true )){
-            printf("MOVIMIENTO NO PERMITIDO\n");
-            break;
-        }else
-            continue;
+        push(&palo[--destino], disc);
+        //si push devuelve false, hacer push en el origen otra vez
+        if(push(&palo[--destino], disc) == false)
+            push(&palo[--origen], disc);
 
     }
 
