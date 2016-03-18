@@ -22,7 +22,7 @@ bool push(struct Pila *pila, int dato){
         return false;
     if (pila->cima >= MAX_PILA)
         return false;
-    if (dato > pila->data[pila->cima-1] && pila->cima >= 0)
+    if (pila->cima > 0 && dato > pila->data[pila->cima-1])
         return false;
 
     pila->data[pila->cima++] = dato;
@@ -44,13 +44,13 @@ int main(int argc, const char **argv){
 
     int destino, origen, disc;
     struct Pila palo[PALOS];
-    bool resultado= true;
+    //bool resultado;
 
 
     for (int p=0; p<PALOS; p++)
         inicializar(&palo[p]);
 
-    for (int disco=5; disco>0; disco--)
+    for (int disco=10; disco>0; disco--)
         push(&palo[0], disco);
 
 
@@ -93,11 +93,11 @@ int main(int argc, const char **argv){
 
     } while(destino > PALOS || destino < 0 );//en caso de q pongamos un destino > 3, o un destino negativo, nos pide otra vez los datos..
     disc = pop(&palo[--origen]);
-    resultado = push( &palo[--destino], disc);
+    bool resultado = push( &palo[--destino], disc);
 
-    //if(resultado == false)
-        //volvemos al principio del do while..
-     //   return vuelta;
+  /*  if(resultado == false)  //vuelve a push el disco en su sitio
+        push( &palo[--origen], disc );
+    */ 
 
 }
 return EXIT_SUCCESS;
