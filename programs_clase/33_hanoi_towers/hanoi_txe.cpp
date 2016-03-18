@@ -22,7 +22,7 @@ bool push(struct Pila *pila, int dato){
         return false;
     if (pila->cima >= MAX_PILA)
         return false;
-    if (pila->cima > 0 && dato > pila->data[pila->cima-1])
+    if (dato > pila->data[pila->cima-1] && pila->cima >= 0)
         return false;
 
     pila->data[pila->cima++] = dato;
@@ -100,6 +100,7 @@ int main(int argc, const char **argv){
      //   return vuelta;
 
 }
+return EXIT_SUCCESS;
 
 }
 
