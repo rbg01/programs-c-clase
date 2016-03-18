@@ -50,7 +50,7 @@ int main(int argc, const char **argv){
     for (int p=0; p<PALOS; p++)
         inicializar(&palo[p]);
 
-    for (int disco=10; disco>0; disco--)
+    for (int disco=9; disco>0; disco--)
         push(&palo[0], disco);
 
 
@@ -91,13 +91,17 @@ int main(int argc, const char **argv){
         printf("\norigen, destino: ");
         scanf(" %i, %i", &origen, &destino);
 
-    } while(destino > PALOS || destino < 0 );//en caso de q pongamos un destino > 3, o un destino negativo, nos pide otra vez los datos..
+    } while(destino > PALOS || destino < 0);//en caso de q pongamos un destino > 3, o un destino negativo, nos pide otra vez los datos..
     disc = pop(&palo[--origen]);
-    bool resultado = push( &palo[--destino], disc);
+    bool resultado = push( &palo[--destino], disc); 
 
-  /*  if(resultado == false)  //vuelve a push el disco en su sitio
-        push( &palo[--origen], disc );
-    */ 
+    if(resultado != true){
+        disc = pop(&palo[--destino]);
+        push( &palo[--origen], disc  );
+    }
+    
+    printf("\n%i", disc);
+
 
 }
 return EXIT_SUCCESS;
