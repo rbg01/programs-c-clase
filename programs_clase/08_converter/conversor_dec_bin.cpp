@@ -1,40 +1,46 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 #define BASE 2 
 
 int main(){
 
-    int origen = 0,
-        cont = 0,
-	resto[15];
+    //Solicitar entrada y guardar en origen
+    system("clear");
+    while(1){
 
-		//Solicitar entrada y guardar en origen
+        int origen = 0,
+            cont = 0;
+        int *resto=NULL;
 
-    printf("Dame un número: \n");
-    scanf(" %i", &origen);
 
-		// Bucle principal   
+        printf("Dame un número: \n");
+        scanf(" %i", &origen);
 
-    for (int i=0; origen != 0; i++, cont++){
+        // Bucle principal   
 
-	
-		//vamos guardando an resto el resultado
-	resto[i] = origen % BASE;
-	origen /= BASE;
-   } 
+        for (int i=0; origen != 0; i++, cont++){
 
-    for ( int j = cont-1; j >= 0; j--){
-    printf("%i", resto[j]);
+            resto = (int *) realloc(resto, i * sizeof(int));
+
+            //vamos guardando an resto el resultado
+            resto[i] = origen % BASE;
+            origen /= BASE;
+        } 
+
+        for ( int j = cont-1; j >= 0; j--){
+            printf("%i", resto[j]);
+        }
+
+        printf ("\n");
+        free (resto);
+
     }
 
-    printf ("\n");
 
 
 
 
 
-
-
-
-	return EXIT_SUCCESS;
+    return EXIT_SUCCESS;
 }
