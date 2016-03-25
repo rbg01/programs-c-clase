@@ -5,6 +5,7 @@
 #define MAX 0x100
 
 
+
 int main(int argc, const char **argv){
 
     char frase[MAX];
