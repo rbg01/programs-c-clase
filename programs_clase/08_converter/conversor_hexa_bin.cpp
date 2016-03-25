@@ -1,38 +1,36 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <string.h>
 
-int main(){
+#define MAX 0x100
 
-    int UNO = 1,
-	DOS = 2,
-	TRES =3,
-	CUATRO = 4,
-	CINCO = 5,
-	SEIS = 6,
-	SIETE = 7,
-	OCHO = 8,
-	NUEVE = 9,
-	A = 10,
-	B = 11,
-	C = 12,
-	D = 13,
-	E = 14,
-	F = 15;
-    char num_hexa[16];
-    char basura[16];
-   
-		// Solicitar entrada
-    printf ("Introduce 2 bytes hexadecimales\n");
+int main(int argc, const char **argv){
 
-		// Guardamos en el array la entrada
-    scanf (" %[a-fA-F0-9] ", num_hexa);
-   
+    int numero=0;
+    char num_hexa[MAX];
+    char *movil = num_hexa;
+    char *base = num_hexa;
 
-    printf("%s\n", num_hexa);
-    printf ("%s\n", basura);
-   
-    
+
+    printf ("Introduce los dígitos hexadecimales:\n");
+    /*Guardamos en el array la entrada*/
+    fgets(num_hexa, MAX, stdin);
+    movil += strlen(num_hexa);
+
+
+    /* recorrer el array para ver los q son hex y no lo son*/
+
+    for (; base <= movil ; base++){
+
+ 
+        printf("%c", *base);
+    printf ("\n");
+    numero+=1;
+  
+    }
+
+  printf ("%i\n", numero-2);
 
 
 
@@ -40,5 +38,6 @@ int main(){
 
 
 
-	return EXIT_SUCCESS;
+
+    return EXIT_SUCCESS;
 }
