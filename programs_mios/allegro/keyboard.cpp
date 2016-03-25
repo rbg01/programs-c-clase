@@ -1,47 +1,55 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <allegro5/allegro.h>
+#include <allegro5/allegro_primitives.h>
 
 const float FPS = 60;
-const int SCREEN_W = 640;
-const int SCREEN_H = 480;
+const int SCREEN_W = 768;
+const int SCREEN_H = 676;
 const int BOUNCER_SIZE = 32;
+
+
+ALLEGRO_DISPLAY *display = NULL;
+ALLEGRO_EVENT_QUEUE *event_queue = NULL;
+ALLEGRO_TIMER *timer = NULL;
+ALLEGRO_BITMAP *bouncer = NULL;
+
+
+
+
 enum MYKEYS {
     KEY_UP, KEY_DOWN, KEY_LEFT, KEY_RIGHT
 };
 
-int main(int argc, char **argv)
-{
-    ALLEGRO_DISPLAY *display = NULL;
-    ALLEGRO_EVENT_QUEUE *event_queue = NULL;
-    ALLEGRO_TIMER *timer = NULL;
-    ALLEGRO_BITMAP *bouncer = NULL;
-    float bouncer_x = SCREEN_W / 2.0 - BOUNCER_SIZE / 2.0;
-    float bouncer_y = SCREEN_H / 2.0 - BOUNCER_SIZE / 2.0;
-    bool key[4] = { false, false, false, false  };
-    bool redraw = true;
-    bool doexit = false;
-
+//Inicializad ADDons
+void iniciar(void){
     if(!al_init()) {
         fprintf(stderr, "failed to initialize allegro!\n");
-        return -1;
+        return ;
     }
 
     if(!al_install_keyboard()) {
         fprintf(stderr, "failed to initialize the keyboard!\n");
-        return -1;
+        return ;
+    }
+
+    if(!al_init_primitives_addon()){
+
+        fprintf(stderr, "failed to initialize primitives!");
+        return ;
     }
 
     timer = al_create_timer(1.0 / FPS);
     if(!timer) {
         fprintf(stderr, "failed to create timer!\n");
-        return -1;
+        return ;
     }
 
     display = al_create_display(SCREEN_W, SCREEN_H);
     if(!display) {
         fprintf(stderr, "failed to create display!\n");
         al_destroy_timer(timer);
-        return -1;
+        return ;
     }
 
     bouncer = al_create_bitmap(BOUNCER_SIZE, BOUNCER_SIZE);
@@ -49,14 +57,9 @@ int main(int argc, char **argv)
         fprintf(stderr, "failed to create bouncer bitmap!\n");
         al_destroy_display(display);
         al_destroy_timer(timer);
-        return -1;
+        return ;
     }
 
-    al_set_target_bitmap(bouncer);
-
-    al_clear_to_color(al_map_rgb(255, 0, 255));
-
-    al_set_target_bitmap(al_get_backbuffer(display));
 
     event_queue = al_create_event_queue();
     if(!event_queue) {
@@ -64,8 +67,43 @@ int main(int argc, char **argv)
         al_destroy_bitmap(bouncer);
         al_destroy_display(display);
         al_destroy_timer(timer);
-        return -1;
+        return ;
     }
+
+
+
+}
+
+//Finalízalo Paul
+void finalizar(){
+
+    al_destroy_bitmap(bouncer);
+    al_destroy_timer(timer);
+    al_destroy_display(display);
+    al_shutdown_primitives_addon();
+    al_destroy_event_queue(event_queue);
+
+
+}
+
+int main(int argc, char **argv){
+
+
+    float bouncer_x = SCREEN_W / 2.0 - BOUNCER_SIZE / 2.0;
+    float bouncer_y = SCREEN_H / 2.0 - BOUNCER_SIZE / 2.0;
+    bool key[4] = { false, false, false, false  };
+    bool redraw = true;
+    bool doexit = false;
+
+    iniciar();
+
+    al_set_target_bitmap(bouncer);
+
+    al_clear_to_color(al_map_rgb(255, 0, 255));
+
+    al_set_target_bitmap(al_get_backbuffer(display));
+
+
 
     al_register_event_source(event_queue, al_get_display_event_source(display));
 
@@ -156,15 +194,12 @@ int main(int argc, char **argv)
 
             al_draw_bitmap(bouncer, bouncer_x, bouncer_y, 0);
 
+            al_draw_filled_circle(200, 160, 30.0, al_map_rgb_f(1.0, 0.0, 1.0));
             al_flip_display();
         }
     }
 
-    al_destroy_bitmap(bouncer);
-    al_destroy_timer(timer);
-    al_destroy_display(display);
-    al_destroy_event_queue(event_queue);
-
+    finalizar();
     return 0;
 }
 
