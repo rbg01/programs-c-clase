@@ -6,6 +6,7 @@
 
 #define ESC 27
 
+
 int main(int argc, const char **argv){
 
     double v, x = 0;
@@ -21,6 +22,7 @@ int main(int argc, const char **argv){
 
     while(getch() != ESC){
 	t1 = time(NULL);
+        /* e = v * t */
 	x+= v*(t1 - t0);
 	clear();
 	mvprintw(10, x, " *");
