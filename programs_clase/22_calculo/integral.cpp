@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 double f(double x){
+
     return x*x;
 
 }
