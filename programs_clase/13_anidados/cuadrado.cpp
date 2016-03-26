@@ -4,6 +4,7 @@
 int main(int argc, const char **argv){
 
     
+
     int entrada;
 
     printf("dame un lado ");
