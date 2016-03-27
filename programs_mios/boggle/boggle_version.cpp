@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <string.h>
 
+
 // Función menea las caras de los dados
 
 int menea_cara(){
