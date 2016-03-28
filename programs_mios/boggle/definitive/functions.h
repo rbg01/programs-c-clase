@@ -3,8 +3,8 @@
 #ifndef __FUNCTIONS_H__
 #define __FUNCTIONS_H__
 
-#define MAXTABL 4
-#define MAXDAD 16
+#define MAXTABL 8
+#define MAXDAD 64
 #define DADOCARAS 6
 
 extern void pintar_tablero(char letras[MAXTABL][MAXTABL]);

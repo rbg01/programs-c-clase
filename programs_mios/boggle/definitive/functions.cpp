@@ -5,14 +5,15 @@
 #include <string.h>
 #include "functions.h"
 
-#define MAXTABL 4
-#define MAXDAD 16
+#define MAXTABL 8
+#define MAXDAD 64
 #define DADOCARAS 6
+
 // Funcion Tirar los dados
 
 
 
-void pintar_tablero(char letras[MAXTABL][MAXTABL]){ 
+void pintar_tablero(char letras[MAXTABL][MAXTABL]){
 
     for (int f=0; f<MAXTABL; f++){
         printf("\t\t");
@@ -21,6 +22,7 @@ void pintar_tablero(char letras[MAXTABL][MAXTABL]){
 
         printf("\n");
     }
+    return ;
 }
 
 void tira_dados(const char DADOS[MAXDAD][DADOCARAS], char letras[MAXTABL][MAXTABL]){
