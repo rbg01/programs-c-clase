@@ -86,7 +86,11 @@ int main(int argc, const char **argv){
         //desordenar letras
         qsort(letras, 64, sizeof(char), cmpfunc);
         int puntos = 0;
-        bzero(busqueda, sizeof(bool));
+        //bzero(busqueda, sizeof(bool));
+        for(int f=0; f<MAXTABL; f++){
+            for(int c=0; c<MAXTABL; c++)
+                busqueda[f][c]= false;
+        }
 
         while(1){
             system ("clear");

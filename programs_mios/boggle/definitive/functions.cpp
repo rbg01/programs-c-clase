@@ -10,6 +10,7 @@
 #define MAXDAD 64
 #define DADOCARAS 6
 
+
 // función busca_palabra
 bool buscala(char letras[MAXTABL][MAXTABL], bool comp[MAXTABL][MAXTABL], char palabra[], int longitud){
 
@@ -18,7 +19,7 @@ bool buscala(char letras[MAXTABL][MAXTABL], bool comp[MAXTABL][MAXTABL], char pa
 
     bool result;
     int match=0;
-    //unsigned longitud = strlen(palabra)-1; //longit palabra a buscar 
+ 
     while(match!=longitud){
 
         for(int i=0; i<longitud; i++){
@@ -27,8 +28,9 @@ bool buscala(char letras[MAXTABL][MAXTABL], bool comp[MAXTABL][MAXTABL], char pa
 
             for (int f=0; f<MAXTABL; f++){
                 for(int c=0; c<MAXTABL; c++){
-                    if (letras[f][c] == letra && comp[f][c] != true){
-                        comp[f][c] = false;
+                    if (letras[f][c] == letra)
+                       if(comp[f][c] == false){
+                        comp[f][c] = true;
                         match += 1;
                         break;
                     }
