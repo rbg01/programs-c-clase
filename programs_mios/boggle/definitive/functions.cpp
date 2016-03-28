@@ -4,15 +4,65 @@
 #include <unistd.h>
 #include <string.h>
 #include "functions.h"
+#include <ctype.h>
 
 #define MAXTABL 8
 #define MAXDAD 64
 #define DADOCARAS 6
 
-// Funcion Tirar los dados
+// función busca_palabra
+bool buscala(char letras[MAXTABL][MAXTABL], bool comp[MAXTABL][MAXTABL], char palabra[], int longitud){
+
+    //printf("%i", longitud);
+
+
+    bool result;
+    int match=0;
+    //unsigned longitud = strlen(palabra)-1; //longit palabra a buscar 
+    while(match!=longitud){
+
+        for(int i=0; i<longitud; i++){
+
+            char letra = toupper(palabra[i]);
+
+            for (int f=0; f<MAXTABL; f++){
+                for(int c=0; c<MAXTABL; c++){
+                    if (letras[f][c] == letra && comp[f][c] != true){
+                        comp[f][c] = false;
+                        match += 1;
+                        break;
+                    }
+                    break;
+                }
+
+                break;
+            }
+
+        }
+
+    }
+    if(match == longitud){
+        result = true;
+        printf("Palabra no encontrada.");
+    }
+    else{
+        result = false;
+        printf("palabra No encontrada.");
+    }
+            
+            /* for(int i=0; i<25; i++){
+                char c = toupper(palabra[i]);
+                printf("%c\n", c);
+                        }
+    printf("%lu", strlen(palabra)-1);*/
 
 
 
+    return (result);
+
+}
+
+// Función pintar_tablero
 void pintar_tablero(char letras[MAXTABL][MAXTABL]){
 
     for (int f=0; f<MAXTABL; f++){

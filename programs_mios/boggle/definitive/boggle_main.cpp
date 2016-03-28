@@ -20,70 +20,38 @@ int main(int argc, const char **argv){
 
     const char DADOS[MAXDAD][DADOCARAS] = {
 
-        {'K','E','U','N','O','T'},
-        {'K','E','U','N','O','T'},
-        {'H','F','S','I','E','E'},
-        {'H','F','S','I','E','E'},
-        {'S','I','R','M','O','A'},
-        {'S','I','R','M','O','A'},
-        {'R','F','X','I','O','A'},
-        {'R','F','X','I','O','A'},
-        {'N','S','R','H','I','E'},
-        {'N','S','R','H','I','E'},
-        {'Z','N','D','V','A','E'},
-        {'Z','N','D','V','A','E'},
-        {'P','L','S','T','U','E'},
-        {'P','L','S','T','U','E'},
-        {'T','A','A','E','I','O'},
-        {'T','A','A','E','I','O'},
-        {'L','W','R','U','I','E'},
-        {'L','W','R','U','I','E'},
-        {'C','R','A','L','E','S'},
-        {'C','R','A','L','E','S'},
-        {'Q','M','B','J','A','O'},
-        {'Q','M','B','J','A','O'},
-        {'B','T','L','R','A','I'},
-        {'B','T','L','R','A','I'},
-        {'D','M','C','P','A','E'},
-        {'D','M','C','P','A','E'},
-        {'G','N','L','Y','U','E'},
-        {'G','N','L','Y','U','E'},
-        {'S','N','D','T','O','E'},
-        {'S','N','D','T','O','E'},
-        {'V','T','N','G','E','I'},
-        {'V','T','N','G','E','I'},
-        {'H','F','S','I','E','E'},
-        {'H','F','S','I','E','E'},
-        {'R','F','X','I','O','A'},
-        {'R','F','X','I','O','A'},
-        {'N','S','R','H','I','E'},
-        {'N','S','R','H','I','E'},
-        {'Z','N','D','V','A','E'},
-        {'Z','N','D','V','A','E'},
-        {'P','L','S','T','U','E'},
-        {'P','L','S','T','U','E'},
-        {'T','A','A','E','I','O'},
-        {'T','A','A','E','I','O'},
-        {'L','W','R','U','I','E'},
-        {'L','W','R','U','I','E'},
-        {'C','R','A','L','E','S'},
-        {'C','R','A','L','E','S'},
-        {'S','I','R','M','O','A'},
-        {'S','I','R','M','O','A'},
-        {'K','E','U','N','O','T'},
-        {'K','E','U','N','O','T'},
-        {'Q','M','B','J','A','O'},
-        {'Q','M','B','J','A','O'},
-        {'B','T','L','R','A','I'},
-        {'B','T','L','R','A','I'},
-        {'D','M','C','P','A','E'},
-        {'D','M','C','P','A','E'},
-        {'G','N','L','Y','U','E'},
-        {'G','N','L','Y','U','E'},
-        {'S','N','D','T','O','E'},
-        {'S','N','D','T','O','E'},
-        {'V','T','N','G','E','I'},
-        {'V','T','N','G','E','I'}
+        {'K','E','U','N','O','T'},{'K','E','U','N','O','T'},
+        {'H','F','S','I','E','E'},{'H','F','S','I','E','E'},
+        {'S','I','R','M','O','A'},{'S','I','R','M','O','A'},
+        {'R','F','X','I','O','A'},{'R','F','X','I','O','A'},
+        {'N','S','R','H','I','E'},{'N','S','R','H','I','E'},
+        {'Z','N','D','V','A','E'},{'Z','N','D','V','A','E'},
+        {'P','L','S','T','U','E'},{'P','L','S','T','U','E'},
+        {'T','A','A','E','I','O'},{'T','A','A','E','I','O'},
+        {'L','W','R','U','I','E'},{'L','W','R','U','I','E'},
+        {'C','R','A','L','E','S'},{'C','R','A','L','E','S'},
+        {'Q','M','B','J','A','O'},{'Q','M','B','J','A','O'},
+        {'B','T','L','R','A','I'},{'B','T','L','R','A','I'},
+        {'D','M','C','P','A','E'},{'D','M','C','P','A','E'},
+        {'G','N','L','Y','U','E'},{'G','N','L','Y','U','E'},
+        {'S','N','D','T','O','E'},{'S','N','D','T','O','E'},
+        {'V','T','N','G','E','I'},{'V','T','N','G','E','I'},
+        {'H','F','S','I','E','E'},{'H','F','S','I','E','E'},
+        {'R','F','X','I','O','A'},{'R','F','X','I','O','A'},
+        {'N','S','R','H','I','E'},{'N','S','R','H','I','E'},
+        {'Z','N','D','V','A','E'},{'Z','N','D','V','A','E'},
+        {'P','L','S','T','U','E'},{'P','L','S','T','U','E'},
+        {'T','A','A','E','I','O'},{'T','A','A','E','I','O'},
+        {'L','W','R','U','I','E'},{'L','W','R','U','I','E'},
+        {'C','R','A','L','E','S'},{'C','R','A','L','E','S'},
+        {'S','I','R','M','O','A'},{'S','I','R','M','O','A'},
+        {'K','E','U','N','O','T'},{'K','E','U','N','O','T'},
+        {'Q','M','B','J','A','O'},{'Q','M','B','J','A','O'},
+        {'B','T','L','R','A','I'},{'B','T','L','R','A','I'},
+        {'D','M','C','P','A','E'},{'D','M','C','P','A','E'},
+        {'G','N','L','Y','U','E'},{'G','N','L','Y','U','E'},
+        {'S','N','D','T','O','E'},{'S','N','D','T','O','E'},
+        {'V','T','N','G','E','I'},{'V','T','N','G','E','I'}
 
     };
 
@@ -93,6 +61,7 @@ int main(int argc, const char **argv){
     char respuesta,
          palabra[25];
     bool busqueda[MAXTABL][MAXTABL];
+    int puntos = 0;
 
     system ("clear");
 
@@ -110,38 +79,45 @@ int main(int argc, const char **argv){
     while(getchar() != ESC){
 
         printf("\tGenerando Tablero....\n");
-        progress();
+//        progress();
         printf("\n");
         tira_dados(DADOS, letras);
 
         //desordenar letras
         qsort(letras, 64, sizeof(char), cmpfunc);
-
-        while(1){
-        system ("clear");
-        printf ("\n");
-        pintar_tablero(letras);
-        printf("\n");
-        // Introducir palabra a buscar
-        printf("\tIntroduce palabra: \n");
-        fgets(palabra,25,stdin);
-
-        for(int i=0; i<25; i++){
-            char c = toupper(palabra[i]);
-            printf("%c", c);
-        }
-        // Ponemos a cero el array busqueda
+        int puntos = 0;
         bzero(busqueda, sizeof(bool));
 
-        //definir funcion en *.cpp y en *.h con éstos argumentos
-        buscar_palabra(DADOS, letras, busqueda);
+        while(1){
+            system ("clear");
+            printf ("\n");
+            pintar_tablero(letras);
+            printf("\n");
+            printf("\tPuntos: %i", puntos);
+            // Introducir palabra a buscar
+            printf("\tIntroduce palabra: \n");
+            fgets(palabra,25,stdin);
 
+            /*for(int i=0; i<25; i++){
+                char c = toupper(palabra[i]);
+                printf("%c", c);
+            }*/
+            int longit = strlen(palabra)-1;
+
+            //definir funcion en *.cpp y en *.h con éstos argumentos
+            bool b = buscala(letras, busqueda, palabra,longit);
+
+            if (b == true){
+                puntos += strlen(palabra)-1;
+            }
+              
         }
-
-
-
-
     }
+
+
+
+
+    
 
     printf("\t.....gracias por jugar.....\n");
     return EXIT_SUCCESS;
