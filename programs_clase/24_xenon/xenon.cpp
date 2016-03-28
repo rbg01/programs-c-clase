@@ -23,10 +23,10 @@ int main(int argc, char **argv){
 
     /*creamos las variables de allegro, que son punteros
      * apuntando a NULL, de momento*/
-    ALLEGRO_DISPLAY *pantalla = NULL;
+    ALLEGRO_DISPLAY *display = NULL;
     ALLEGRO_BITMAP *sprites = NULL;
-    ALLEGRO_EVENT_QUEUE *cola_eventos = NULL;
-    ALLEGRO_TIMER *temporizador = NULL;
+    ALLEGRO_EVENT_QUEUE *event_queue = NULL;
+    ALLEGRO_TIMER *timer = NULL;
 
     bool key[4] = {false, false, false,false};//Array para las teclas, todos a false 
     bool redraw = true;
@@ -74,7 +74,7 @@ ni    /* Inicializamos el teclado */
     /* Alegro artifact creation
      * del display, timer, cola eventos y sprites*/
 
-    pantalla = al_create_display(SCREEN_W, SCREEN_H);
+    display = al_create_display(SCREEN_W, SCREEN_H);
     if(!display) {
         al_show_native_message_box(
                 display,
@@ -88,7 +88,7 @@ ni    /* Inicializamos el teclado */
     }
 
 
-    temporizador = al_create_timer(1.0 / FPS);
+    timer = al_create_timer(1.0 / FPS);
     if(!timer) {
         al_show_native_message_box(
                 display,
@@ -98,13 +98,13 @@ ni    /* Inicializamos el teclado */
                 NULL,
                 ALLEGRO_MESSAGEBOX_ERROR);
 
-        al_destroy_display(pantalla);
+        al_destroy_display(display);
 
         return 0;
     }
 
 
-    cola_eventos = al_create_event_queue();
+    event_queue = al_create_event_queue();
     if(!event_queue) {
         al_show_native_message_box(
                 display,
@@ -114,8 +114,8 @@ ni    /* Inicializamos el teclado */
                 NULL,
                 ALLEGRO_MESSAGEBOX_ERROR);
 
-        al_destroy_display(pantalla);
-        al_destroy_timer(temporizador);
+        al_destroy_display(display);
+        al_destroy_timer(timer);
 
         return 0;
     }
@@ -133,18 +133,18 @@ ni    /* Inicializamos el teclado */
                 NULL,
                 ALLEGRO_MESSAGEBOX_ERROR);
 
-        al_destroy_display(pantalla);
-        al_destroy_timer(temporizador);
-        al_destroy_event_queue(cola_eventos);
+        al_destroy_display(display);
+        al_destroy_timer(timer);
+        al_destroy_event_queue(event_queue);
 
         return 0;
     }
 
     /* registramos todos los eventos provenientes de la pantalla
      * el keyboard y el temporizador*/
-    al_register_event_source(event_queue, al_get_display_event_source(pantalla));
+    al_register_event_source(event_queue, al_get_display_event_source(display));
     al_register_event_source(event_queue, al_get_keyboard_event_source());
-    al_register_event_source(event_queue, al_get_timer_event_source(temporizador));
+    al_register_event_source(event_queue, al_get_timer_event_source(timer));
 
 
     /* Init es una funcion definida como extern el "physics.h" , que le meto
@@ -152,7 +152,7 @@ ni    /* Inicializamos el teclado */
      * de memoria donde hemos declarado nave como estructura*/
     init(sprites, &nave);
 
-    al_start_timer(temporizador);
+    al_start_timer(timer);
 
     while(!doexit){
         ALLEGRO_EVENT ev;
@@ -208,7 +208,7 @@ ni    /* Inicializamos el teclado */
             }
         }
 
-        if(redraw && al_is_event_queue_empty(cola_eventos)) {
+        if(redraw && al_is_event_queue_empty(event_queue)) {
             redraw = false;
             update_physics(key, &nave);
             al_clear_to_color(al_map_rgb(0,0,0));
