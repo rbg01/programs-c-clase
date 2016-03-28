@@ -81,7 +81,7 @@ int main(int argc, const char **argv){
         printf("\tGenerando Tablero....\n");
 //        progress();
         printf("\n");
-        tira_dados(DADOS, letras);
+        tira_dados(*DADOS, *letras);
 
         //desordenar letras
         qsort(letras, 64, sizeof(char), cmpfunc);
@@ -95,21 +95,25 @@ int main(int argc, const char **argv){
         while(1){
             system ("clear");
             printf ("\n");
-            pintar_tablero(letras);
+            pintar_tablero(*letras);
             printf("\n");
             printf("\tPuntos: %i", puntos);
             // Introducir palabra a buscar
-            printf("\tIntroduce palabra: \n");
+            printf("\tIntroduce palabra: ");
             fgets(palabra,25,stdin);
 
-            /*for(int i=0; i<25; i++){
+            int longit=0;
+            for(int i=0; i<25; i++){
                 char c = toupper(palabra[i]);
+                printf("\t");
                 printf("%c", c);
-            }*/
-            int longit = strlen(palabra)-1;
+                longit = i;
+            }
+          // int longit = strlen(palabra)-1;
+            printf("%lu,%i", strlen(palabra), longit);
 
             //definir funcion en *.cpp y en *.h con éstos argumentos
-            bool b = buscala(letras, busqueda, palabra,longit);
+            bool b = buscala(*letras, *busqueda, palabra,longit);
 
             if (b == true){
                 puntos += strlen(palabra)-1;

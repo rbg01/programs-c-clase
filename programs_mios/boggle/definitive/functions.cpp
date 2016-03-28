@@ -9,12 +9,13 @@
 #define MAXTABL 8
 #define MAXDAD 64
 #define DADOCARAS 6
+//#define ESC 27
 
 
 // función busca_palabra
-bool buscala(char letras[MAXTABL][MAXTABL], bool comp[MAXTABL][MAXTABL], char palabra[], int longitud){
+bool buscala(char *letras, bool *comp, char *palabra, int longitud){
 
-    //printf("%i", longitud);
+   // printf("%i", longitud);
 
 
     bool result;
@@ -24,13 +25,13 @@ bool buscala(char letras[MAXTABL][MAXTABL], bool comp[MAXTABL][MAXTABL], char pa
 
         for(int i=0; i<longitud; i++){
 
-            char letra = toupper(palabra[i]);
+            
+            char letra = toupper(*(palabra+i));
 
             for (int f=0; f<MAXTABL; f++){
                 for(int c=0; c<MAXTABL; c++){
-                    if (letras[f][c] == letra)
-                       if(comp[f][c] == false){
-                        comp[f][c] = true;
+                    if (*(letras+f*MAXTABL+c) == letra && *(comp+f*MAXTABL+c) == false){
+                        *(comp +f*MAXTABL +c) = true;
                         match += 1;
                         break;
                     }
@@ -65,26 +66,26 @@ bool buscala(char letras[MAXTABL][MAXTABL], bool comp[MAXTABL][MAXTABL], char pa
 }
 
 // Función pintar_tablero
-void pintar_tablero(char letras[MAXTABL][MAXTABL]){
+void pintar_tablero(char *letras){
 
     for (int f=0; f<MAXTABL; f++){
         printf("\t\t");
         for (int c=0; c<MAXTABL; c++)
-            printf("%c  ", letras[f][c]);
+            printf("%c  ", *(letras+f*MAXTABL+c));
 
         printf("\n");
     }
     return ;
 }
 
-void tira_dados(const char DADOS[MAXDAD][DADOCARAS], char letras[MAXTABL][MAXTABL]){
+void tira_dados(const char *DADOS, char *letras){
 
 
     int dad=0;
 
-    for (int fil=0; fil<MAXTABL; fil++){
-        for (int col=0; col<MAXTABL; col++, dad++){
-            letras[fil][col] = DADOS[dad][menea_cara()];
+    for (int f=0; f<MAXTABL; f++){
+        for (int c=0; c<MAXTABL; c++, dad++){
+            *(letras+f*MAXTABL+c) = *(DADOS+dad*DADOCARAS+menea_cara());
         }
 
     }
