@@ -14,10 +14,6 @@
 
 
 
-int main(int argc, const char **argv){
-
-    srand(time(NULL));
-
     const char DADOS[MAXDAD][DADOCARAS] = {
 
         {'K','E','U','N','O','T'},{'K','E','U','N','O','T'},
@@ -56,12 +52,20 @@ int main(int argc, const char **argv){
     };
 
 
+
+
+int main(int argc, const char **argv){
+
+    srand(time(NULL));
+
+
     char letras[MAXTABL][MAXTABL],
          tablero[MAXTABL][MAXTABL];
     char respuesta,
          palabra[25];
     bool busqueda[MAXTABL][MAXTABL];
-    int puntos = 0;
+    //int puntos = 0;
+    //int longit = 0;
 
     system ("clear");
 
@@ -86,6 +90,7 @@ int main(int argc, const char **argv){
         //desordenar letras
         qsort(letras, 64, sizeof(char), cmpfunc);
         int puntos = 0;
+        
         //bzero(busqueda, sizeof(bool));
         for(int f=0; f<MAXTABL; f++){
             for(int c=0; c<MAXTABL; c++)
@@ -102,23 +107,26 @@ int main(int argc, const char **argv){
             printf("\tIntroduce palabra: ");
             fgets(palabra,25,stdin);
 
-            int longit=0;
-            for(int i=0; i<25; i++){
-                char c = toupper(palabra[i]);
-                printf("\t");
-                printf("%c", c);
-                longit = i;
-            }
-          // int longit = strlen(palabra)-1;
-            printf("%lu,%i", strlen(palabra), longit);
+           // int longit=0;
+           
+            //longit += strlen(palabra)-1;
+          //longit = strlen(palabra)-1;
+                   //definir funcion en *.cpp y en *.h con éstos argumentos
+          
 
-            //definir funcion en *.cpp y en *.h con éstos argumentos
-            bool b = buscala(*letras, *busqueda, palabra,longit);
-
-            if (b == true){
+            if (buscala(*letras, *busqueda, palabra)){
+                printf("\tPalabra encontrada!!\n");
                 puntos += strlen(palabra)-1;
+  for(int f=0; f<MAXTABL; f++){
+            for(int c=0; c<MAXTABL; c++)
+                printf("%i", busqueda[f][c]);
+            printf("\n");
+            sleep(1);
+        }
             }
-              
+            else 
+                printf("\tPalabra NO encontrada\n");
+                continue;
         }
     }
 

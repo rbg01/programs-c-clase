@@ -6,7 +6,7 @@
 #define MAXTABL 8
 #define MAXDAD 64
 #define DADOCARAS 6
-extern bool buscala(char *letras, bool *comp, char *palabra, int longitud);
+extern bool buscala(char *letras, bool *comp, char *palabra);
 extern void pintar_tablero(char *letras);
 extern  void tira_dados(const  char *DADOS, char *letras);
 extern  int menea_cara();

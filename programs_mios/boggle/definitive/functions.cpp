@@ -11,12 +11,13 @@
 #define DADOCARAS 6
 //#define ESC 27
 
-
 // función busca_palabra
-bool buscala(char *letras, bool *comp, char *palabra, int longitud){
+bool buscala(char *letras, bool *comp, char *palabra){
 
-   // printf("%i", longitud);
+    int longitud;
+   printf("%i", longitud);
 
+   longitud = strlen(palabra)-1;
 
     bool result;
     int match=0;
@@ -45,13 +46,16 @@ bool buscala(char *letras, bool *comp, char *palabra, int longitud){
 
     }
     if(match == longitud){
-        result = true;
-        printf("Palabra no encontrada.");
+      
+        return result = true;
+
+ 
+
     }
-    else{
-        result = false;
-        printf("palabra No encontrada.");
-    }
+    else
+        
+        return result = false;
+  
             
             /* for(int i=0; i<25; i++){
                 char c = toupper(palabra[i]);
@@ -59,9 +63,7 @@ bool buscala(char *letras, bool *comp, char *palabra, int longitud){
                         }
     printf("%lu", strlen(palabra)-1);*/
 
-
-
-    return (result);
+    
 
 }
 
