@@ -9,18 +9,19 @@
 #define MAXTABL 8
 #define MAXDAD 64
 #define DADOCARAS 6
+//#define EOF '\n'
 //#define ESC 27
 
 // función busca_palabra
-bool buscala(char *letras, bool *comp, char *palabra){
+bool buscala(char *letras, bool *comp, char *palabra,int tam){
 
-    int longitud;
-   printf("%i", longitud);
-
-   longitud = strlen(palabra)-1;
-
+    int longitud = tam;
     bool result;
-    int match=0;
+    int match = 0;
+
+   /* for (int i=0; *(palabra+i)!= '\0'; i++)
+        longitud += i;*/
+    
  
     while(match!=longitud){
 
@@ -46,24 +47,15 @@ bool buscala(char *letras, bool *comp, char *palabra){
 
     }
     if(match == longitud){
-      
+ 
         return result = true;
 
  
 
     }
     else
-        
-        return result = false;
-  
-            
-            /* for(int i=0; i<25; i++){
-                char c = toupper(palabra[i]);
-                printf("%c\n", c);
-                        }
-    printf("%lu", strlen(palabra)-1);*/
 
-    
+        return result = false; 
 
 }
 
