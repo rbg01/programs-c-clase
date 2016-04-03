@@ -5,18 +5,32 @@
 
 
 
+bool comprobar_letra_a_letra(char tablero[], const char *patron, int offset){
+
+    for (int i=0; i< (int) strlen(patron); i++)
+        if (tablero[offset + i] != patron[i])
+            return false;
+
+    return true;
+}
+
 int main(int argc, const char **argv){
+    char tablero[] = "arpedpedrozuloaga";
+    bool palabra_encontrada = false;
 
+    if (argc < 2){
+        fprintf(stderr, "Usage: %s <patron de busqueda>\n\n", argv[0]);
+        return EXIT_FAILURE;
+    }
 
-    char palabra_1[25],
-         palabra_2[25];
+    for (   int offset=0;
+            tablero[offset + (int) strlen(argv[1])] != '\0' && !palabra_encontrada;
+            offset++ )
+        palabra_encontrada = comprobar_letra_a_letra(tablero, argv[1], offset);
 
+    if (palabra_encontrada)
+        printf("%s\n", argv[1]);
 
-    printf("\tIntroduce una palabra a buascar:\n");
-    fgets(palabra, 25, stdin);
-    printf("%i", (int)strlen(palabra));
-
-    printf("introduce una palabra:\n");
-    for(int i=0; getchar)
-
+    return EXIT_SUCCESS;
+}
 
