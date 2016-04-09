@@ -3,6 +3,7 @@
 #include <time.h>
 #include <string.h>
 #include <ctype.h>
+#include <unistd.h>
 
 #define LADO 16
 #define MAXLETRAS 31
@@ -27,61 +28,66 @@ void pintar_tablero(char *tablero){
         printf("\n");
 
     }
-  
+
     return;
 
 }
 
-bool buscar_letra(char *tablero, char *palabra){
+bool buscar_letra(char tablero[LADO][LADO], char palabra[], int fil, int col, int tamano){
 
-    for(int f=0; f<LADO; f++){
-        for(int c=0; c<LADO; c++)
-            if(*(tablero+f*LADO+c)!= *palabra)
-                return false;
-    }
+    for(int offset=0; offset<tamano; offset++)
+        if(tablero[fil][col+offset] != palabra[offset])
+            return false;
+
     return true;
 }
 
-void pon_mays(char palabra[], int fin){
 
-    for(int i=0; i<fin; i++)
-         toupper(palabra[i]);
-    
-    return;
-}
 int main(int argc, const char **argv){
 
     srand(time(NULL));
 
-    const char abcedario[] = {"ABCADEUFGHIJKELMNOPQIRSTUVWXOYZ"};
+    const char abcedario[] = {"abcadeufghijkelmnopqirstuvwxoyz"};
     char tablero[LADO][LADO],
          palabra[MAXPALABRA];
     int prueb[LADO][LADO];
-    bool letra_encontrada;
-
-    system("clear");
+    bool letra_encontrada = false;  //--> Flag
 
     rellenar_tablero(abcedario, *tablero);
 
-    pintar_tablero(*tablero);
+    while(1){
+        system("clear");
 
-    printf("\n");
 
-    printf("\tIntroduce una palabra a buascar:\n");
-    fgets(palabra, MAXPALABRA, stdin);
+        pintar_tablero(*tablero);
 
-    int fin_palabra = ((int)strlen(palabra)-1);
+        printf("\n");
 
-    pon_mays(palabra, fin_palabra); 
 
-    letra_encontrada = buscar_letra(*tablero, palabra);
+        printf("\tIntroduce una palabra a buascar:\n");
+        fgets(palabra, MAXPALABRA, stdin);
 
-    if(letra_encontrada!=true)
-        printf("letra No encontrada");
-    else
-        printf("letra encontrada");
-   
-    
+        int fin_palabra = ((int) strlen(palabra) - 1);
+
+        palabra[fin_palabra] = '\0';
+        printf("%i\n", fin_palabra);
+
+        for (int f=0; f<LADO; f++){
+            for (int c=0; c + fin_palabra < LADO
+                    && !letra_encontrada; c++){
+                letra_encontrada = buscar_letra(tablero, palabra, f, c, fin_palabra);
+
+            }
+        }
+
+        if(letra_encontrada)
+            printf("Palabra  encontrada\n");
+        else
+            printf("Palabra no encontrada\n");
+
+        sleep(1);
+    }
+
 
 
     return EXIT_SUCCESS;
