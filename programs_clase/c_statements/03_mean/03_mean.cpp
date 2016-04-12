@@ -1,24 +1,25 @@
+
+
 #include <stdio.h>
 #include <stdlib.h>
 
+#define ESC 990099
 int main(int argc, const char **argv){
 
     int cont = 1;
-    float suma,
+    float suma = 0.0,
           numeros,
-          media;
+          media = 0.0;
 
 
     printf ("Dime los números que quieras:\n");
     printf ("(pulsa 'f' para finalizar)\n");
 
-    for (cont; numeros <0 ; cont++){
+    for(; numeros != ESC ; cont++){
         scanf (" %f", & numeros);
 
-        if ((numeros >= 0) || (numeros != 'f')){
-            suma += numeros;
-            
-        }
+           suma += numeros;
+
     }
 
 
