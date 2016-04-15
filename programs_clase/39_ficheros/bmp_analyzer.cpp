@@ -5,7 +5,7 @@
 
 struct BMP {
 
-    unsigned short magic[2];  //-->ojo va sin \0
+    unsigned short magic;  //-->ojo va sin \0
     unsigned file_size;
     unsigned res1;
     unsigned img_offset;
@@ -24,7 +24,7 @@ struct BMP {
 
 void show(struct BMP cabecera) {
 
-    if ( *cabecera.magic != 'B' + 'M' * 0x100  ){
+    if ( cabecera.magic != 'B' + 'M' * 0x100  ){
         printf("Invalid Bitmap!\n");
         exit(1);
     } else
@@ -72,7 +72,7 @@ int main(int argc, char **argv){
 
 
 
-    if ( *cabecera.magic != 'B' + 'M' * 0x100  ){
+    if ( cabecera.magic != 'B' + 'M' * 0x100  ){
         fprintf(stderr, "This is not a BitMap.\n");
         return EXIT_FAILURE;
     }
