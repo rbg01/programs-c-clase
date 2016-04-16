@@ -4,16 +4,6 @@
 #include <strings.h>
 #include "functions.h"
 
-#define N 0x100
-
-  //-->Estructuras y funciones<--
-
-struct Stack{
-
-    char data[N];
-    int cima;
-};
-
 bool push (char p, struct Stack *pila){
 
     pila->data[pila->cima++] = p;

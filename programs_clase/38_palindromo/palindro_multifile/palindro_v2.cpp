@@ -6,8 +6,6 @@
 
 #define N 0x100
 
-
-
 int main (int argc, char **argv){
 
 
