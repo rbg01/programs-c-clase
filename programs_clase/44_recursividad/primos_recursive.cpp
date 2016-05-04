@@ -15,7 +15,7 @@ bool es_primo (int candidato, int posible){
 
     if (posible == 1)
         return false;
-
+		/* (candidato % posible == 0) —> es como si fuera un if */
     respuesta = candidato % posible == 0;
 
     return respuesta || es_primo(candidato, posible);
