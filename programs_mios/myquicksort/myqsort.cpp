@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MAX 17
+#define MAX 15
 
 void intercambia(int datos[MAX], int pos1, int pos2){
 
@@ -24,25 +24,32 @@ void  imprime(int datos[MAX]){
 
 }
 
-void max_num(int datos[MAX],  int fin){
+void max_num(int datos[MAX], int fin){
 
-    int izq = MAX - MAX;
+    int izq = fin - fin;
     int drch = izq + 1;
-    int limit = fin - 1;
+    int limit;
 
-    while(izq != fin - 1){
+    limit = fin-1;
+
+    for(int i=0; i < limit; i++){
+    while(drch < limit){
 
         if(datos[izq] <= datos[drch]){
             izq++;
             drch++;
+        
         }
     
             intercambia(datos, izq, drch);
-          //  max_num(datos, limit);
+            imprime(datos);
+
+          // max_num(datos, limit);
 
         }
+    }
 
-    
+   printf("izq=%i, drch=%i\n", izq, drch); 
     return;
 
 }
@@ -50,11 +57,11 @@ void max_num(int datos[MAX],  int fin){
 int main(int argc, const char **argv){
 
 
-    int datos[MAX] = {4, 5, 8, 6, 10, 3, 2, 7, 1, 15, 12, 9, 1, 10, 18, 23, 88};
+    int datos[MAX] = {4, 5, 8, 6, 10, 3, 2, 7, 1, 15, 12, 9, 1, 10, 25};
 
     imprime(datos);
 
-    for(int i=0; i < MAX; i++)
+ //  for(int i=0; i <= MAX; i++)
         max_num(datos, MAX);
    
     imprime(datos);
