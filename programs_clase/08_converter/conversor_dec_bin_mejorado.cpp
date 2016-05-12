@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define BASE 2 
+
+#define BASE 2
 
 int main(){
 
