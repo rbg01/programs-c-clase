@@ -1,8 +1,8 @@
 
 
 
-  /*  Clasifica unos numeros, en paro impar
-   *   y los ordena de menor a mayor    */
+/*  Clasifica unos numeros, en par o impar
+ *   y los ordena de menor a mayor    */
 
 
 
@@ -23,27 +23,30 @@ void inicializa (struct Ttabla *array){
     array->n = 0;
 }
 
-bool comprueba(int numero){
+int comprueba(int numero){
 
-    if(numero % 2 == 0)
-        return true;
+    if(numero <= 0)
+        return 0;
+    else if(numero % 2 == 0)
+        return 1;
     else
-        return false;
+        return -1;
 }
 
 
 void push (struct Ttabla *array, int numero){
 
 
-    if (array->cima >= array->n)
+    if (array->cima >= array->n){
         array->datos = (int*) realloc(array->datos, (array->cima + 1) * sizeof(int));
-    array->datos[array->cima++] = numero;
-    array->n = array->cima;
+        array->datos[array->cima++] = numero;
+        array->n = array->cima;
+    }
 
 }
 
 void imprime(struct Ttabla *array){
-    
+
     for(int i=0; i < array->n; i++)
         printf("-> %i\n", array->datos[i]);
 }
@@ -53,34 +56,37 @@ int main(int argc, const char **argv){
     struct Ttabla entrada, pares, impares;
     int entry;
     bool condition = true;
+    int comp;
 
 
     inicializa(&entrada);
     inicializa(&pares);
     inicializa(&impares);
 
-    printf("Para salir introduce un valor negativo....\n");
+    printf("Para salir introduce 0 o un valor negativo....\n");
 
     while(condition){
- 
+
         //Si entry es negativo, salmos del bucle
         //-Escanea la entrada
         scanf (" %i", &entry);
         //-comprueba si es par o impar
 
-        if(entry <= 0)
-            condition = false;
+        comp = comprueba(entry);
 
+        switch(comp){
+            case 1:
+                push(&pares, entry);
+                break;
+            case -1:
+                push(&impares, entry);
+                break;
+            case 0:
+                condition = false;
+                break;
+        }
 
-        //-guardalo en el array correspondiente
-        if(comprueba(entry))
-            push(&pares, entry);
-        else
-            push(&impares, entry);
-
-
-    }
-
+}
     printf("Numeros pares:\n");
     imprime(&pares);
     printf("Numeros impares:\n");
@@ -88,5 +94,5 @@ int main(int argc, const char **argv){
 
 
 
-	return EXIT_SUCCESS;
+    return EXIT_SUCCESS;
 }
