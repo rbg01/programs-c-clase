@@ -48,22 +48,24 @@ void calcula_penalty(int array[MAX], int penal[], int buses[], int clase[], int 
         }
         int resultado;
         resultado = MAX_BUS - aux;
-        printf("%i - %i = %i del bus %i, del pattern %i\n", MAX_BUS, aux, resultado, bus+1, orden);
+        printf("%i - %i = %i del bus %i, del pattern %i\n\n\n", MAX_BUS, aux, resultado, bus+1, orden);
+  
+
         if(resultado < MAX_BUS){
             penal[orden] += resultado;
             printf(" %i\n", penal[orden]);
-        }else if (resultado == MAX_BUS)
+        }else if (aux == 0){
 
-            penal[orden] = penal[orden];
+            penal[orden] += resultado - MAX_BUS;
+            printf(" %i\n", penal[orden]);
 
-
-        else{
+        }else 
             penal[orden] += resultado * 3;
-        printf(" %i\n", penal[orden]);
-        }
+            printf(" %i\n", penal[orden]);
+
 
     }
-  
+
 
 }
 
@@ -72,7 +74,7 @@ int main(int argc, const char **argv){
 
     srand(time(NULL));
 
-    int clase_gente [] = {20, 15, 18, 32, 7, 10, 23, 13, 18, 12};
+    int clase_gente[] = {20, 15, 18, 32, 7, 10, 23, 13, 18, 12};
     int patterns[FILS][MAX];
     int autobuses[] = {1, 2, 3, 4};
     int penaltys[FILS];
