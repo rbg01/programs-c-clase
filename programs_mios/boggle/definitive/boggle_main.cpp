@@ -66,6 +66,7 @@ int main(int argc, const char **argv){
     bool busqueda[MAXTABL][MAXTABL];
     //int puntos = 0;
     //int longit = 0;
+    int tam = 0;
 
     system ("clear");
 
@@ -111,10 +112,11 @@ int main(int argc, const char **argv){
 
             //longit += strlen(palabra)-1;
             //longit = strlen(palabra)-1;
-            int tam;
+          
             for (int i=0; palabra[i]!= '\0'; i++){
-                tam=i;
-                 printf("%c, %i %i", palabra[i], i, tam);
+                
+                 printf("letra=%c,i= %i", palabra[i], i);
+                 tam = i;
 
 
             }
