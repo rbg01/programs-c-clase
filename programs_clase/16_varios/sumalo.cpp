@@ -3,7 +3,7 @@
 
 int main (int argc, const char **argv){
 
-    int op_1, op_2, resultado;
+    int op_1, op_2;
 
     if (argc == 1)
         printf("Ingresa dos numeros, si éso...\n");
